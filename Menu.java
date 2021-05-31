@@ -22,11 +22,13 @@ public class Menu extends World
     }
     
     public void prepararMenu(){
-        addObject(new jugar(), 400,200);
-        addObject(new records(), 400,250);
-        addObject(new instrucciones(), 400, 300);
-        addObject(new salir(), 400, 350);
+        addObject(new Jugar(), 400,200);
+        addObject(new Records(), 400,250);
+        addObject(new Instrucciones(), 400, 300);
+        addObject(new Salir(), 400, 350);
         addObject(flecha, 200, 200);
+        //GreenfootImage background = new GreenfootImage("");
+        //setBackground(background);
     }
     
     public void act(){

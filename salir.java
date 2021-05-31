@@ -5,7 +5,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class salir extends Actor
+public class Salir extends Actor
 {
     /**
      * Act - do whatever the salir wants to do. This method is called whenever
