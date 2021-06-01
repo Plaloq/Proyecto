@@ -8,8 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Menu extends World
 {
-    Flecha flecha = new Flecha();
-    private int opcion=0;
     /**
      * Constructor for objects of class Menu.
      * 
@@ -26,49 +24,11 @@ public class Menu extends World
         addObject(new Records(), 400,250);
         addObject(new Instrucciones(), 400, 300);
         addObject(new Salir(), 400, 350);
-        addObject(flecha, 200, 200);
         //GreenfootImage background = new GreenfootImage("");
         //setBackground(background);
     }
     
     public void act(){
-        if(Greenfoot.isKeyDown("UP"))
-        {
-            opcion--;
-            Greenfoot.delay(8);
-        }
-        if(Greenfoot.isKeyDown("DOWN"))
-        {
-            opcion++;
-            Greenfoot.delay(8);
-        }
-        if(opcion>=4)
-        {
-            opcion=0;
-        }
-        if(opcion<0)
-        {
-            opcion=3;
-        }
-        flecha.setLocation(200, 200+(opcion*50));
-        
-        if (Greenfoot.isKeyDown("SPACE"))
-        {
-            switch(opcion)
-            {
-                case 0:
-                    //Greenfoot.setWorld(new Juego());
-                    break;
-                case 1:
-                    //Greenfoot.setWorld(new Records());
-                    break;
-                case 2:
-                    //Greenfoot.setWorld(new Instrucciones());
-                    break;
-                case 3:
-                    Greenfoot.stop();
-                    break;
-            }
-        }
+
     }
 }
