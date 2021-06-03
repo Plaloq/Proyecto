@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Records extends Boton
+class Records extends Boton
 {
     public Records(){
         GreenfootImage botonRecords = new GreenfootImage(160, 60);

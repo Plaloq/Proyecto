@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Jugar extends Boton
+class Jugar extends Boton
 {
     public Jugar(){
         GreenfootImage botonJugar = new GreenfootImage(110, 60);
@@ -25,7 +25,7 @@ public class Jugar extends Boton
         checkMouse();
         if(Greenfoot.mouseClicked(this))
         {
-            //Greenfoot.setWorld(new Jugar());
+            Greenfoot.setWorld(new Level1());
         }
         
         // Add your action code here.

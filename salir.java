@@ -5,7 +5,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Salir extends Boton
+class Salir extends Boton
 {
     public Salir(){
         GreenfootImage botonSalir = new GreenfootImage(90, 60);
