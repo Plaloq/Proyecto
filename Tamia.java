@@ -70,48 +70,5 @@ public class Tamia extends Actor
         }
         counter = (counter + 1)%10;
     }
-    
-    public void estarParado(){
-        if(counter == 0){
-            if(currentImage == 0){
-                setImage("images/ArdillaComun1.png");
-            } else if (currentImage == 4){
-                setImage("images/ArdillaComun2.png");
-                currentImage = -1;
-            }
-
-            currentImage = (currentImage + 1);
-        }
-        counter = (counter + 1)%10;
-    }
-    
-    public void caminarDerecha(){
-        
-        if(counter == 0){
-            if(currentImage == 0){
-                setImage("images/ArdillaCorriendo .png");
-            } else if (currentImage == 4){
-                setImage("images/ArdillaCorriendo2 .png");
-                currentImage = -1;
-            }
-
-            currentImage = (currentImage + 1);
-        }
-        counter = (counter + 1)%10;
-    }
-    
-    public void caminarIzquierda(){
-        
-        if(counter == 0){
-            if(currentImage == 0){
-                setImage("images/ArdillaCorriendoAtras.png");
-            } else if (currentImage == 4){
-                setImage("images/ArdillaCorriendoAtras2.png");
-                currentImage = -1;
-            }
-
-            currentImage = (currentImage + 1);
-        }
-        counter = (counter + 1)%10;
-    }
+   
 }
