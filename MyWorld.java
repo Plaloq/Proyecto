@@ -20,4 +20,5 @@ public class MyWorld extends World
         
         addObject(new Tamia(), 150, 420);
     }
+
 }
