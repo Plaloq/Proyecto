@@ -21,17 +21,18 @@ public class Tamia extends Actor
     /**
      * Act - do whatever the Tamia wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        handleDirection();
-    }
-    
+     */    
     public Tamia()
     {
         setImage("images/ArdillaComun1.png");
         currentImagesSet = estarParadoImageSet;
     }
+    
+    public void act() 
+    {
+        handleDirection();
+    }
+
     
     public void handleDirection(){
         int x = getX();
