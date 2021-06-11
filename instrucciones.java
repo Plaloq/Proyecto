@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Instrucciones extends Boton
 {
     public Instrucciones(){
-   
         GreenfootImage botonInstrucciones = new GreenfootImage(260, 60);
         Font adjustFont = new Font(true, false, 40);
         botonInstrucciones.setFont(adjustFont);
@@ -26,10 +25,7 @@ public class Instrucciones extends Boton
         checkMouse();
         if(Greenfoot.mouseClicked(this))
         {
-            //Greenfoot.setWorld(new Instrucciones());
+            Greenfoot.setWorld(new WorldInstrucciones());
         }
     }
-    /*public void presBoton(){
-        //Greenfoot.setWorld(new Instruccion());
-    }*/
 }

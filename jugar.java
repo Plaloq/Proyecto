@@ -25,10 +25,8 @@ public class Jugar extends Boton
         checkMouse();
         if(Greenfoot.mouseClicked(this))
         {
-            //Greenfoot.setWorld(new Jugar());
+            Greenfoot.setWorld(new Nivel1());
         }
-        
-        // Add your action code here.
     }
     
 }
