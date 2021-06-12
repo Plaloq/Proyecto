@@ -11,11 +11,11 @@ public class Tamia extends Actor
     private static final int OFFSET = 5;
     private int currentImage;
     private int counter;
-    private int vSpeed = 0; 
+    private int vSpeed = 0;
     private int accelaration = 2;
     private boolean jumping;
     private int jumpStrength = 15;
-    
+
     private String []currentImagesSet;
     
     private String []estarParadoImageSet = new String[]{"images/ArdillaComun1.png", "images/ArdillaComun2.png"};
@@ -42,7 +42,7 @@ public class Tamia extends Actor
     public void handleDirection(){
         int x = getX();
         int y = getY();
-        
+
         if(Greenfoot.isKeyDown("right")){
             currentImagesSet = caminarDerechaImageSet;
             setLocation(x + OFFSET, y);
@@ -51,7 +51,7 @@ public class Tamia extends Actor
         }else{
             currentImagesSet = estarParadoImageSet;
         }
-        
+
         if(Greenfoot.isKeyDown("up") && jumping==false){
             jump();
             setLocation(x, y - OFFSET*15);
@@ -67,14 +67,15 @@ public class Tamia extends Actor
             if(currentImage == 0){
                 setImage(currentImagesSet[0]);   
             } else if (currentImage == 2){
-                setImage(currentImagesSet[1]); 
+                setImage(currentImagesSet[1]);
                 currentImage = -1;
             }
+
             currentImage = (currentImage + 1);
         }
         counter = (counter + 1)%10;
     }
-    
+
     public void Falling()
     {
         setLocation(getX(), getY() +vSpeed);
@@ -93,7 +94,7 @@ public class Tamia extends Actor
             Falling();
         }
     }
-    
+
     public boolean onGround()
     {
         Actor ground = getOneObjectAtOffset(0, 25, Suelo.class);
@@ -107,15 +108,15 @@ public class Tamia extends Actor
             return true;
         }
     }
-    
+
     public void jump()
     {
         vSpeed = vSpeed - jumpStrength;
         jumping = true;
         Falling();
     }
-   
-    
+
+
     public boolean onFloor()
     {
         Actor ground = getOneObjectAtOffset(0, 25, Suelo.class);
@@ -129,7 +130,7 @@ public class Tamia extends Actor
             return true;
         }
     }
-    
+
     public void moveToGround(Actor ground)
     {
         int groundHeight = ground.getImage().getHeight();
@@ -138,5 +139,5 @@ public class Tamia extends Actor
         setLocation(getX(), newY);
         jumping = false;
     }
-   
-}   
+
+}
