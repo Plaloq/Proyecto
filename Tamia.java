@@ -11,7 +11,11 @@ public class Tamia extends Actor
     private static final int OFFSET = 5;
     private int currentImage;
     private int counter;
-    
+    private int vSpeed = 0;
+    private int accelaration = 2;
+    private boolean jumping;
+    private int jumpStrength = 15;
+
     private String []currentImagesSet;
     
     private String []estarParadoImageSet = new String[]{"images/ArdillaComun1.png", "images/ArdillaComun2.png"};
@@ -30,6 +34,7 @@ public class Tamia extends Actor
     
     public void act() 
     {
+        checkFall();
         handleDirection();
     }
 
@@ -37,23 +42,22 @@ public class Tamia extends Actor
     public void handleDirection(){
         int x = getX();
         int y = getY();
-        
+
         if(Greenfoot.isKeyDown("right")){
             currentImagesSet = caminarDerechaImageSet;
             setLocation(x + OFFSET, y);
+        }else if(Greenfoot.isKeyDown("down")){
+            setLocation(x, y + OFFSET);
+        }else{
+            currentImagesSet = estarParadoImageSet;
         }
-        else if(Greenfoot.isKeyDown("left")){
+
+        if(Greenfoot.isKeyDown("up") && jumping==false){
+            jump();
+            setLocation(x, y - OFFSET*15);
+        }else if(Greenfoot.isKeyDown("left")){
             currentImagesSet = caminarIzquierdaImageSet;
             setLocation(x - OFFSET, y);
-        }
-        else if(Greenfoot.isKeyDown("down")){
-            setLocation(x, y + OFFSET);
-        }
-        else if(Greenfoot.isKeyDown("up")){
-            setLocation(x, y - OFFSET);
-        }
-        else{
-            currentImagesSet = estarParadoImageSet;
         }
         mover();
     }
@@ -62,8 +66,8 @@ public class Tamia extends Actor
         if(counter == 0){
             if(currentImage == 0){
                 setImage(currentImagesSet[0]);   
-            } else if (currentImage == 4){
-                setImage(currentImagesSet[1]); 
+            } else if (currentImage == 2){
+                setImage(currentImagesSet[1]);
                 currentImage = -1;
             }
 
@@ -71,5 +75,69 @@ public class Tamia extends Actor
         }
         counter = (counter + 1)%10;
     }
-   
+
+    public void falling()
+    {
+        setLocation(getX(), getY() +vSpeed);
+        if(vSpeed <=8)
+        {
+            vSpeed = vSpeed + accelaration;
+        }
+        jumping = true;
+    }
+
+    public void checkFall(){
+        if(onFloor())
+        {
+            vSpeed=0;
+        }else{
+            falling();
+        }
+    }
+
+    public boolean onGround()
+    {
+        Actor ground = getOneObjectAtOffset(0, 25, Suelo.class);
+
+        if(ground == null)
+        {
+            jumping = true;
+            return false;
+        }else{
+            moveToGround(ground);
+            return true;
+        }
+    }
+
+    public void jump()
+    {
+        vSpeed = vSpeed - jumpStrength;
+        jumping = true;
+        falling();
+    }
+
+
+    public boolean onFloor()
+    {
+        Actor ground = getOneObjectAtOffset(0, 25, Suelo.class);
+
+        if(ground == null)
+        {
+            jumping = true;
+            return false;
+        }else{
+            moveToGround(ground);
+            return true;
+        }
+    }
+
+    public void moveToGround(Actor ground)
+    {
+        int groundHeight = ground.getImage().getHeight();
+        int newY = ground.getY() - (groundHeight + getImage().getHeight())/2;
+
+        setLocation(getX(), newY);
+        jumping = false;
+    }
+
 }

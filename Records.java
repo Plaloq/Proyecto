@@ -30,7 +30,4 @@ public class Records extends Boton
         // Add your action code here.
     }
     
-    /*public void presBoton(){
-        //Greenfoot.setWorld(new Record());
-    }*/
 }
