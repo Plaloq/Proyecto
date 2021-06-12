@@ -25,9 +25,6 @@ public class Menu extends World
         addObject(new Records(), 400,250);
         addObject(new Instrucciones(), 400, 300);
         addObject(new Salir(), 400, 350);
-        //GreenfootImage background = new GreenfootImage("");
-        //setBackground(background);
-
     }
     
     public void act(){
