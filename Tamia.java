@@ -76,7 +76,7 @@ public class Tamia extends Actor
         counter = (counter + 1)%10;
     }
 
-    public void Falling()
+    public void falling()
     {
         setLocation(getX(), getY() +vSpeed);
         if(vSpeed <=8)
@@ -91,7 +91,7 @@ public class Tamia extends Actor
         {
             vSpeed=0;
         }else{
-            Falling();
+            falling();
         }
     }
 
@@ -113,7 +113,7 @@ public class Tamia extends Actor
     {
         vSpeed = vSpeed - jumpStrength;
         jumping = true;
-        Falling();
+        falling();
     }
 
 
