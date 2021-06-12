@@ -25,7 +25,7 @@ public class Records extends Boton
         checkMouse();
         if(Greenfoot.mouseClicked(this))
         {
-            //Greenfoot.setWorld(new Records());
+            Greenfoot.setWorld(new WorldPuntuaciones());
         }
         // Add your action code here.
     }
