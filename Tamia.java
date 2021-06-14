@@ -15,6 +15,7 @@ public class Tamia extends Actor
     private int accelaration = 2;
     private boolean jumping;
     private int jumpStrength = 15;
+    private static int puntuacion;
 
     private String []currentImagesSet;
     
@@ -74,6 +75,7 @@ public class Tamia extends Actor
             currentImage = (currentImage + 1);
         }
         counter = (counter + 1)%10;
+        recolectarBellota();
     }
 
     public void falling()
@@ -140,4 +142,22 @@ public class Tamia extends Actor
         jumping = false;
     }
 
+    public void recolectarBellota(){
+        Actor interseccion = getOneIntersectingObject(Bellota.class);
+        
+        if(interseccion != null){
+            Counter punt=((Nivel1)getWorld()).getCounter();
+            punt.add(30);
+            getWorld().removeObject(interseccion);
+            puntuacion = punt.getTarget();
+        }
+    }
+    
+    public int getPuntuacion(){
+        return puntuacion;
+    }
+    
+    public void setPuntuacion(int puntuacion){
+        this.puntuacion=puntuacion;
+    }
 }

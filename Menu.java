@@ -21,10 +21,12 @@ public class Menu extends World
     }
 
     public void prepararMenu(){
-        addObject(new Jugar(), 400,200);
-        addObject(new Records(), 400,250);
-        addObject(new Instrucciones(), 400, 300);
-        addObject(new Salir(), 400, 350);
+        addObject(new Nubes(), 400,470);
+        addObject(new LogoJuego(), 400,100);
+        addObject(new Jugar(), 400,300);
+        addObject(new Records(), 400,350);
+        addObject(new Instrucciones(), 400, 400);
+        addObject(new Salir(), 400, 450);
     }
     
     public void act(){
