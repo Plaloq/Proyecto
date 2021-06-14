@@ -16,6 +16,7 @@ public class Tamia extends Actor
     private boolean jumping;
     private int jumpStrength = 15;
     private static int puntuacion;
+    private static int nivelActual = 1;
 
     private String []currentImagesSet;
     
@@ -76,6 +77,7 @@ public class Tamia extends Actor
         }
         counter = (counter + 1)%10;
         recolectarBellota();
+        quemarse();
     }
 
     public void falling()
@@ -146,18 +148,34 @@ public class Tamia extends Actor
         Actor interseccion = getOneIntersectingObject(Bellota.class);
         
         if(interseccion != null){
-            Counter punt=((Nivel1)getWorld()).getCounter();
-            punt.add(30);
+            Counter Punt=((Nivel)getWorld()).getCounter();
+            Punt.add(30);
             getWorld().removeObject(interseccion);
-            puntuacion = punt.getTarget();
+            puntuacion = Punt.getTarget();
+            
+            if(puntuacion==300){
+                Greenfoot.setWorld(new GameOver());
+            }
         }
     }
     
-    public int getPuntuacion(){
+    public void quemarse(){
+        Actor interseccion = getOneIntersectingObject(Fuego.class);
+        if(interseccion != null){
+            Greenfoot.setWorld(new GameOver());
+        }
+    }
+
+    public static void setNivel(int nivel){
+        nivelActual = nivel;
+    }
+    
+    public static void setPuntuacion(int p){
+        puntuacion=p;
+    }
+    
+    public static int getPuntuacion(){
         return puntuacion;
     }
     
-    public void setPuntuacion(int puntuacion){
-        this.puntuacion=puntuacion;
-    }
 }

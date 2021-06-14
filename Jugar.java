@@ -25,7 +25,8 @@ public class Jugar extends Boton
         checkMouse();
         if(Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new Nivel1());
+            Greenfoot.setWorld(new Nivel());
+            Tamia.setPuntuacion(0);
         }
     }
     

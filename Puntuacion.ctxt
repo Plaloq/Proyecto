@@ -9,4 +9,6 @@ comment3.params=p
 comment3.target=void\ insertarPuntuacion(int)
 comment4.params=
 comment4.target=void\ guardarPuntuaciones()
-numComments=5
+comment5.params=
+comment5.target=void\ act()
+numComments=6

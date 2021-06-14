@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Menu extends World
 {
-    private GreenfootSound backgroundMusic = new GreenfootSound("fondo.mp3");
     /**
      * Constructor for objects of class Menu.
      * 
@@ -17,7 +16,9 @@ public class Menu extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1);
+        Puntuacion p = new Puntuacion();
         prepararMenu();
+        Nivel.backgroundStop();
     }
 
     public void prepararMenu(){
@@ -27,9 +28,5 @@ public class Menu extends World
         addObject(new Records(), 400,350);
         addObject(new Instrucciones(), 400, 400);
         addObject(new Salir(), 400, 450);
-    }
-    
-    public void act(){
-        
     }
 }

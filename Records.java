@@ -16,6 +16,7 @@ public class Records extends Boton
         botonRecords.drawString("Records", 0,50);
         setImage(botonRecords);
     }
+
     /**
      * Act - do whatever the records wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -27,7 +28,6 @@ public class Records extends Boton
         {
             Greenfoot.setWorld(new WorldPuntuaciones());
         }
-        // Add your action code here.
     }
-    
+
 }

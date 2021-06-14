@@ -13,12 +13,12 @@ import java.util.Scanner;
  */
 public class Puntuacion extends Actor
 {
-    private static ArrayList<Integer> puntuacion = new ArrayList<Integer>();
+    private static ArrayList<Integer> Puntuacion = new ArrayList<Integer>();
 
     public Puntuacion(){
         int punt;
 
-        if(puntuacion.isEmpty()){
+        if(Puntuacion.isEmpty()){
             try{
                 File Archivo = new File("ArchivoPuntuaciones.txt");
 
@@ -26,7 +26,7 @@ public class Puntuacion extends Actor
 
                 do{
                     punt = Entrada.nextInt();
-                    puntuacion.add(punt);
+                    Puntuacion.add(punt);
                 }while(Entrada.hasNext());
             }catch(IOException e){
 
@@ -35,36 +35,38 @@ public class Puntuacion extends Actor
     }
 
     public static ArrayList<Integer> getPuntuaciones(){
-        return puntuacion;
+        return Puntuacion;
     }
 
     public static void insertarPuntuacion(int p)
     {
-        puntuacion.add(p);
-        Collections.sort(puntuacion, Collections.reverseOrder());
-        puntuacion.remove(puntuacion.size()-1);
+        Puntuacion.add(p);
+        Collections.sort(Puntuacion, Collections.reverseOrder());
+        Puntuacion.remove(Puntuacion.size()-1);
     }
 
     public static void guardarPuntuaciones(){
         FileWriter fichero = null;
         PrintWriter pw = null;
-         try
+        try
         {
             fichero = new FileWriter("ArchivoPuntuaciones.txt");
             pw = new PrintWriter(fichero);
 
-            for (int i = 0; i < puntuacion.size(); i++)
-                pw.println(puntuacion.get(i));
+            for (int i = 0; i < Puntuacion.size(); i++)
+                pw.println(Puntuacion.get(i));
 
         } catch (Exception e) {
         } finally {
-           try {
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
+            try {
+                if (null != fichero)
+                    fichero.close();
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
         }
     }
+    
+    public void act(){}
 
 }
