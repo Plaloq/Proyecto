@@ -1,7 +1,9 @@
 import greenfoot.*;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.io.*;
+import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Write a description of class Puntuacion here.
@@ -11,59 +13,60 @@ import java.io.*;
  */
 public class Puntuacion extends Actor
 {
-    private static ArrayList<Integer> puntuacion = new ArrayList<Integer>();
+    private static ArrayList<Integer> Puntuacion = new ArrayList<Integer>();
 
     public Puntuacion(){
-        int points;
+        int punt;
 
-        if(puntuacion.isEmpty()){
+        if(Puntuacion.isEmpty()){
             try{
-                File Archivo = new File("Puntuaciones.txt");
+                File Archivo = new File("ArchivoPuntuaciones.txt");
 
-                Scanner entrada = new Scanner(new FileReader(Archivo));
+                Scanner Entrada = new Scanner(new FileReader(Archivo));
 
                 do{
-                    points = entrada.nextInt();
-                    puntuacion.add(points);
-                }while(entrada.hasNext());
+                    punt = Entrada.nextInt();
+                    Puntuacion.add(punt);
+                }while(Entrada.hasNext());
             }catch(IOException e){
 
             }
         }
     }
 
-    public static ArrayList<Integer> getPuntuacion(){
-        return puntuacion;
+    public static ArrayList<Integer> getPuntuaciones(){
+        return Puntuacion;
     }
 
     public static void insertarPuntuacion(int p)
     {
-        puntuacion.add(p);
-        Collections.sort(puntuacion, Collections.reverseOrder());
-        puntuacion.remove(puntuacion.size()-1);
+        Puntuacion.add(p);
+        Collections.sort(Puntuacion, Collections.reverseOrder());
+        Puntuacion.remove(Puntuacion.size()-1);
     }
 
     public static void guardarPuntuaciones(){
         FileWriter fichero = null;
         PrintWriter pw = null;
-        try{
-            fichero = new FileWriter("Puntuaciones.txt");
+        try
+        {
+            fichero = new FileWriter("ArchivoPuntuaciones.txt");
             pw = new PrintWriter(fichero);
 
-            for(int i = 0; i< puntuacion.size(); i++)
-            {
-                pw.println(puntuacion.get(i));
-            }
-        }catch(Exception e){
-        }finally{
-            try{
-                if(fichero != null){
+            for (int i = 0; i < Puntuacion.size(); i++)
+                pw.println(Puntuacion.get(i));
+
+        } catch (Exception e) {
+        } finally {
+            try {
+                if (null != fichero)
                     fichero.close();
-                }
-            }catch(Exception e2){
+            } catch (Exception e2) {
                 e2.printStackTrace();
             }
         }
     }
+    
+    public void act(){}
 
 }
